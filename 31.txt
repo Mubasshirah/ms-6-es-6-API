@@ -1,0 +1,191 @@
+***javascript update version es6/ecmascript
+
+1. let vs const:
+          *const is not reassignable.but if we take an array in const. we can push elements in that const array.
+          *for object,we can reassign properties value through object.properties method.
+
+          **let const block scope type but var function scoped. jekono loop er vitor kono let or const decleare kora hole segula sudhu setar moddhei kaj kore.er baire kaj korena.
+
+2. default parameter value set inside function:
+      *value dia dile seta nibe noeto default ta nibe
+                        function add(first,second=20){
+                        const result=first+second;
+                        return result;
+                        }
+                        console.log(add(10,50));
+
+3. backtick: ``
+      features: multiline code,
+                dynamic variable input , ${variable name}
+
+4. Arrow Function vs regular function:
+        function expression/ function declaration:
+                      const  add=function add(a,b){
+                        const total=a+b;
+                        return total;
+                    }
+                    annonymous function:
+                    const  add1=function add1(a,b){
+                        const total=a+b;
+                        return total1;
+                    }        
+         function expression/declaration er slim/concise version hoilo  arrow function:
+                 multiple parameter: const add2=(a,b)=>a+b;
+                   single parameter: const singlePare=num=>num*5;
+                                     console.log(singlePare(10));
+
+                *multi line code thakle => er pore {} er vitor code gulo likhte hbe. and obossoi return korte hbe.
+
+        *arrow fn er khetre duplicate parameter likhle error dibe.but regular e dibrna .tobe duplicate use kora uchid na.
+        *arrow fn dont have their own this.but regular fn have.
+
+a.spread operator(...): kono akta array thk sonkha gulo ber  kore ene jdi kono kaj korte hoa taile ja kortehbe:
+                               
+                     const numbers=[23,12,54,49]
+                     console.log(...numbers);
+                     const largest=Math.max(...numbers);
+                     console.log(largest)
+
+b. non-primitive data type reference dhore rakhe.for example,
+                                const number=[2,3,4,5,6]
+                                const number1=number;
+                                number.push(44)
+                                number1.push(443)
+                                console.log(number)
+                                console.log(number1)
+            *that means ,aktate push korle arekta teu push hoe jay auto.
+            **duita arrya ke different rakhte (...) use korte hobe.
+                                       const number=[2,4,5,6,7];
+                                       const number2=[2,4,5,6,7,65,43,555,...number,123];
+                                       const number1=[...number];
+                                       number1.push(23);
+                                       console.log(number)
+                                       console.log(number1)
+                                       console.log(number2)
+
+c.object and array destructuring:
+                           
+              const fish={
+              name:'hilsa',
+              age:2,
+              address:'padma',
+              contact:'4376876576',
+               }
+               const {name ,address,contact,age}=fish;
+                  console.log (age);
+
+              *danpase object name or {object} e likha jay.ar baam pase object er sob property name gulo exactly likhte hbe but serial maintain mandatory na.atai destructuring.
+
+array:  
+       const number=[43,433,2,3,5]
+       const [a,b,c,d,e]=number;
+       console.log(number);
+       console.log(d);
+       *array er khtre bsmpsse jekono variable name dia jay.tobe [] er vitor ditehbe.
+
+        const number=[43,433,2,3,5]
+        const [a,b,...c]=number;
+        console.log(number);
+        console.log(c);
+        *(...c ) dia bujhay baki jegulo ache.orthat 43 and 433(ai duita a,b dia decleare kora ) er pore baki gulo.
+
+PRACTICE PROBLEM:
+1. akta array of string nite hbe.jei string er length even hbe seguloke abar notun akta array te pushkorte hbe:
+
+const friendNew=friendName=>{
+    
+    let newArray=[];
+    for(let i=0;i<friendName.length;i++){
+        const element=friendName[i];
+        if(element.length % 2!=0){
+            newArray.push(element);
+        }
+    }
+    return newArray;
+}
+const friendName=['namin','romib','samu','emus','tanjib'];
+console.log(friendNew(friendName))
+
+2.arrow fn nibo array of number er.sob gulo element ke square kore segulor avg ke return korbo.
+
+const sqrNum=number=>{
+    let sum=0;
+    let avg;
+for(let i=0;i<number.length;i++){
+    const element=number[i];
+    const square=Math.pow(element,2);
+    sum=sum+square;
+    avg=sum/number.length;
+    
+}
+return avg;
+}
+const number=[20,30,40,50];
+console.log(sqrNum(number));
+
+3.kata arrow fn jaar duita array parameter.duita array ke combine kore akta new array te rakhte hbe and setar max ber korte hbe:
+
+const combineArray=(firArr,secArr)=>{
+    const newArray=[...firArr,...secArr];
+    const maxi=Math.max(...newArray);
+    return maxi; 
+}
+const fir=[2,3,4,5];
+const sec=[6,7,8,9];
+console.log(combineArray(fir,sec));
+
+
+INTERVIEW QN:
+1. difference between event handler and event listener:Event listeners and event handlers are used to handle events, such as button clicks on your page.
+
+There is a subtle difference between event listeners and event handlers: An object can only have one event handler for a specific event but it can have multiple event listeners for the event.
+
+When in doubt, prefer event listeners over event handlers.
+
+******eventHandler:
+const button = document.querySelector(".btn")
+
+button.onclick = () => {
+  console.log("First event handler!");
+};
+
+button.onclick = () => {
+  console.log("Second event handler!");
+};
+///////////////output:
+As an object can only have one event handler for each event type, the first onclick handler gets overridden by the second. This results in an output:
+
+Second event handler!
+
+******eventListener:
+const button = document.querySelector(".btn")
+
+button.addEventListener("click", () => {
+  console.log("First event listener!");
+});
+
+button.addEventListener("click", () => {
+  console.log("Second event listener!");
+});
+////////////output:
+It is okay to have multiple event listeners of the same event per object. Thus, both of the listeners are triggered once a button is clicked:
+
+First event listener!
+Second event listener!
+
+2.common javascript events:
+There are different types of events in JavaScript that are used to react to events. Here, we will discuss some of the famous or most commonly used events such as:
+
+Onclick
+Onkeyup
+Onmouseover
+Onload
+Onfocus
+
+3.event.preventDefault() vs event.stopPropagation():
+first one is a method present in the event interface. This method prevents the browser from executing the default behavior of the selected element. 
+Example 1: Preventing a link from following the URL so that the browser can not go to another page.
+
+second one is a method is used to prevent the parent element from accessing the event. Basically, this method is used to prevent the propagation of the same event from being called. For eg,  we have a button element inside a div tag and there is an onclick event on both of them, then whenever we try to activate the event attached to the button element, then the event attached to the div element also gets executed because div is the parent of the button element.
+
+3.template literals in es6:Template literals are literals delimited with backtick (`) characters, allowing for multi-line strings, string interpolation with embedded expressions, and special constructs called tagged templates.
