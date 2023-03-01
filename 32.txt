@@ -1,0 +1,173 @@
+1.How to access complex object value:(nested object)
+exmple-1:
+const myFriendsInfo=[
+{name:'aslam',age:20,assress:'dhaka'},
+{name:'slam',age:2,assress:{
+    road:1,
+    block:'c',
+    house:50
+}
+
+},
+{name:'asla',age:40,assress:'dhak'},
+];
+console.log(myFriendsInfo[1].assress.house);
+
+optional chaining: ? use kora
+console.log(myFriendsInfo[1]?.assress?.house);
+*ata use korle ar error dibena.undefined dekhabe jdikonotar value na pay.
+
+2.map:(return kore)
+                   const numbers=[2,3,4,5,6,7];
+                   let double=[];
+                   for(const number of numbers){
+                       const doubleNum=number*2;
+                       double.push(doubleNum);
+                     }
+                   console.log(double)
+
+                   *ai same kajta map kore aro short cut ekora jay
+
+                   const numbers=[2,3,4,5,6,7];
+                   const makeDouble=numbers.map(num=>num*2);
+                   console.log(makeDouble)
+****////****more example of map:
+                          const friends=['asim','gasim','samuni','famunipa']
+                          const firstLetter=friends.map(friend=>friend[0]);
+                          console.log(firstLetter)
+
+                          const friendLength=friends.map(friend=>friend.length);
+                          console.log(friendLength)
+
+const products=[
+    {id:1,name:'laptop',price:104000},
+    {id:2,name:'mobile',price:130000},
+    {id:3,name:'watch',price:120000},
+    {id:4,name:'airpod',price:100400},
+]
+let priceTotal=0;
+const totalProductPrice=products.map(product=>product.price)
+console.log(totalProductPrice)
+
+
+3.for each: map er motoi but kichu return korena tai kono variable e nia jayna and arrow function er vitor console.log korte hoa.
+  const products=[
+    {id:1,name:'laptop',price:104000},
+    {id:2,name:'mobile',price:130000},
+    {id:3,name:'watch',price:120000},
+    {id:4,name:'airpod',price:100400},
+]
+
+  products.forEach(product=>console.log(product.price));
+
+               difference between map and for each:
+               1.return ase,nai 
+               2.notun akta array banaye setar moddhe push kore,banayna
+               3.duitar khetrei: original array ke modify korena
+
+4.filter: specific kichu aktake khuje ber korte use hoa.
+   
+   const products=[
+    {id:1,name:'laptop',price:104000},
+    {id:2,name:'mobile',price:130000},
+    {id:3,name:'watch',price:120000},
+    {id:4,name:'airpod',price:100400},
+   ]
+const expensive=products.filter(product=>product.price>120000);
+console.log(expensive)
+const productName=products.filter(product=>product.name==='airpod');
+console.log(productName)
+
+5.find: filter jotogulo sorter sathe milbe sob dibe.but din khali first erta dibe
+
+const fives=[5,14,15,20,25,33]
+const divisible=fives.find(five=>five%5===0);
+console.log(divisible)
+
+6.reduce: array er sob element ke sum 
+
+const numbers=[1,2,3,4,5]
+const sum=numbers.reduce((prev,curr)=>prev+curr,0);
+console.log(sum);
+
+****value access . dia o kora jay abar variable decleare kore o kora jay.
+                           const products=[
+                           {id:1,name:'laptop',price:104000},
+                           {id:2,name:'mobile',price:130000},
+                           {id:3,name:'watch',price:120000},
+                           {id:4,name:'airpod',price:100400},
+                           ]
+                           const single=products[0]['name'];
+                           const proName='name';
+                           const single1=products[0][proName];
+                           console.log(single)
+
+7.create class  from object,constructor(jei property gulo vary korbe/dynamic sei khtre use hoa):
+        class:class is a template for creating object.
+
+class instructor{
+    name;
+    team='web team'
+    designation='instructor'
+    location;
+    constructor(name,location){
+        this.name=name;
+        this.location=location;
+    }
+    startSession(time){
+        console.log(`start session at ${time}`);
+    }
+
+}
+const first=new instructor('adiba','dhaka');  ////must new dite hbe////
+console.log(first);
+first.startSession(9.00);
+
+const second=new instructor('tanjib','america');
+console.log(second)
+second.startSession(11);
+
+**object er vitor property and method thake.method hoilo function.
+**prototypical inheritance:
+In JavaScript, objects have a special hidden property [[Prototype]] (as named in the specification), that is either null or references another object. That object is called “a prototype”:
+When we read a property from object, and it’s missing, JavaScript automatically takes it from the prototype. In programming, this is called “prototypal inheritance”.
+
+PRACTICE PROBLEM:
+1.akta array of object thk map kore age property nia,sei age guloke array.reduce procedure e jog korte hbe
+let ageTOtal=0;
+for(const people of peoples){
+    const singleAge=people.age;
+    ageTOtal=ageTOtal+singleAge;
+}
+console.log(ageTOtal)
+
+const singleAge=peoples.map(people=>people.age);
+const totalAge=singleAge.reduce((prev,curr)=>(prev+curr),0);
+console.log(totalAge);
+
+INTERVIEW QN:
+1.how to empty an array(4 ways):
+a.
+  const a=[1,2,3,4,5]
+while(a.length > 0) {
+    a.pop();
+}
+console.log(a)
+b.
+  const a=[1,2,3,4,5]
+a.length=0;
+console.log(a)
+c.
+  let a=[1,2,3,4,5]
+let b=[];
+a=b;
+console.log(a)
+
+practice problem:
+
+1. akta sonkhar array thk amn sonkha gulofilter korte hbe jegulo odd.
+const numbers=[3,2,4,33,53,55,36,63,59,161,44,64];
+const newNumber=numbers.filter(number=>number%2);
+console.log(newNumber)
+
+
