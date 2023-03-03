@@ -1,0 +1,163 @@
+1.internet: is a worldwide system of computer network. It works almost like mobile network.
+2.ip address: is a unique address that identifies a device on internet or local network.
+3.ipv4 vs ipv6:32bit vs 128bit
+4.DNS:
+a.domain name system is a phonebook for internet.
+b. human access information on online through domain names like nytimes.computer.
+c.web browser interect  through internet protocol(ip)address.
+d.dns translates domain names to ip address so browser can load internet resources.
+9.HTTP:hyper text transfer protocol.
+10.HTTPS: hyper text transfer protocol secure. ekhane data encrypted thake.tai secure thke,
+
+11. data getting system from internet:
+client side->data through DNS(domain name to ip address)->server->database(specific information collect kore)->client side e show kore
+
+12. API:
+application programming interface.(simply it means waiter in a restaurant who takes our order, inform in the kitchen,and bring back the foods from the kitchern according to ouur order).
+
+APIs are mechanisms that enable two software components to communicate with each other using a set of definitions and protocols. For example, the weather bureau’s software system contains daily weather data. The weather app on your phone “talks” to this system via APIs and shows you daily weather updates on your phone.
+
+13.JSON:javascript object notation.
+database thk client side e je data gulo ase segulo bivinno vbe ase. akta way holo json akare.
+JSON is a text-based data format following JavaScript object syntax,
+JavaScript Object Notation (JSON) is a standard text-based format for representing structured data based on JavaScript object syntax. It is commonly used for transmitting data in web applications (e.g., sending some data from the server to the client, so it can be displayed on a web page, or vice versa).
+JSON exists as a string — useful when you want to transmit data across a network. 
+
+file extension of JSON: .json
+
+supported data types for JSON: 
+In JSON, values must be one of the following data types:
+
+a string
+a number
+an object (JSON object)
+an array
+a boolean
+null
+
+14.JSON.stringify: jekono kisuke string banay fele
+
+const shop={
+    name:'classy',
+    product:['mac','laptop','mobile'],
+    adress:{
+        house:'50/2',
+        road:'1/2'
+    },
+    isOpen:true,
+    isNew:false,
+}
+console.log(shop);
+
+const shopStingify=JSON.stringify(shop);
+console.log(shopStingify)
+
+5.JSON.parse: string e convert kora thkle setake abar normal object e change kora jay.
+
+const shopParse=JSON.parse(shopStingify);
+console.log(shopParse)
+
+6.JSONplaceHolder:
+kichu demo API banano ache.jegulo call kore usee kora jbe.
+
+fetch API: is a modern interface that allows us to make http reuest to server from web browser.
+common Structure of fetch API:
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(json => console.log(json))
+
+example:
+1.fetch data from api and show it in localhost
+
+<body>
+    <button onclick="loadData()">load data</button>
+    <button onclick="loadData1()">load data1</button>
+    <div>
+        <ul id="userDiv"></ul>
+    </div>
+  <script src="module-33.js"></script>  
+</body>
+js code:
+function loadData1(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(users => showData(users))
+}
+function showData(users){
+    console.log(users);
+    for(const user of users){
+        console.log(user.name)
+        const ul=document.getElementById('userDiv');
+        const li=document.createElement('li');
+        li.innerText=user.name;
+        ul.appendChild(li);
+    }
+}
+
+example-2: load data,show data with css
+
+css:
+ <style>
+        .post-style{
+              background-color: aqua;
+              margin-bottom: 20px;
+              width: 200px;
+              border-radius: 5px;
+              padding: 10px;
+        }
+</style>
+
+html:
+<section>
+        <h1>all posts will be shown here</h1>
+        <div id="post-container" >
+
+        </div>
+</section>
+
+js:
+function loadPost(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res=>res.json())
+    .then(data=>showPost(data))
+}
+function showPost(posts){
+    console.log(posts);
+    const postContainer=document.getElementById('post-container');
+    for(const post of posts){
+        console.log(post);
+        const div=document.createElement('div');
+        div.innerHTML=`
+        <h5>User ID: ${post.id}</h5>
+        <h4>User Name: ${post.name}</h4>
+        <p>User Email: ${post.email}</p>
+        `;
+        postContainer.appendChild(div);
+        div.classList.add('post-style');
+    }
+}
+loadPost();
+
+
+7.REST api method: 1.get
+                   2.post
+                   3.put/patch
+                   4.delete
+ * rest api er moto crud hoilo: create,read,update,delete.
+
+ *put vs patch vs post:
+                     1.put create or update
+                     2.patch update
+                     3.post create
+
+8.HTTP response status codes:
+HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes:
+
+Informational responses (100 – 199)
+Successful responses (200 – 299)
+Redirection messages (300 – 399)
+Client error responses (400 – 499)
+Server error responses (500 – 599)
+
+9.get vs post:: GET- It requests the data from a specified resource. POST- It submits the processed data to a specified resource.
+get has limit ,post does not have

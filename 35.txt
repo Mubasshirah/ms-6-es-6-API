@@ -1,0 +1,54 @@
+1.sob phone na dekhiye kisu dekhanor system:
+  ***phone show korar somoy phones.slice(0,number) korte hbe
+
+2."no phone found" message add or remove:
+html:
+   <div id="noFOundMsg" class="d-none my-5 text-center">
+        <h3 class="text-warning">No phone found</h3>
+    </div>
+js:
+const messageDiv=document.getElementById('noFOundMsg');
+if(phones.length===0){
+    messageDiv.classList.remove('d-none');
+}
+else{
+    messageDiv.classList.add('d-none');
+}
+
+3.Show and hide loading spinner while loading API data:
+ akta fn banabo karon duijayga thk call korte hbe. fn er boolean parameter thkbe,
+ const togglespinner=(isLoading)=>{
+    const toggleField=document.getElementById('toggleSpinner');
+    if(isLoading){
+        toggleField.classList.remove('d-none');
+    
+    }
+    else{
+        toggleField.classList.add('d-none');
+    }
+    }
+
+***search button e click korar por suru hbe.
+searchbutton e event listener add kore  togglespinner(true) call korbo
+tarpor main fn er kj ses kore show fn erkj ses kore baire ese  togglespinner(false) kore dibo.
+
+4.Implement Show All button to display all data:
+  *aita standard system na.pore korte parbo standard.
+
+5.display phone details:in modal
+
+6.enter button:
+
+
+some common errors:
+
+1.fetch browser e only kj kore.
+  node e kj korena.
+  (js ke browser e chalano hoile e khli ara kaj kore)
+
+2.js file ke html file  er sthe connect a korle dom kaj korena.error dibe node e.
+
+synchronous:sequencial. (.then) use kora hoa js ke synchronous korar jnno
+asynchronous:js asynchronous vbe kj kore.kono sequence maintain korena
+
+****The conditional (ternary) operator is the only JavaScript operator that takes three operands: a condition followed by a question mark (?), then an expression to execute if the condition is truthy followed by a colon (:), and finally the expression to execute if the condition is falsy. This operator is frequently used as an alternative to an if...else statement.

@@ -1,0 +1,260 @@
+API loading example using arrow function:
+
+
+////////////////////////////////////1.kaniy west api
+html:
+ <section>
+        <div id="quote-container">
+
+
+        </div>
+        <button onclick="loadQuote()">get Quote</button>
+    </section>
+js:
+const loadQuote= ()=>{
+    fetch('https://api.kanye.rest/')
+    .then(res=>res.json())
+    .then(data=>showQuote(data))
+}
+const showQuote=quote=>{
+    console.log(quote)
+    const showed=document.getElementById('quote-container');
+    showed.innerText=quote.quote
+
+}
+loadQuote();
+
+////////////////////////////////////2.rest api
+html:
+<section>
+    <div id="countryDetail">
+       
+    </div>
+</section>
+    <section>
+        <div id="country-div" class="countryClass">
+
+        </div>
+</section>
+
+js:
+const loadCountry=()=>{
+    fetch('https://restcountries.com/v3.1/all')
+    .then(res=>res.json())
+    .then(data=>showCountry(data))
+}
+const showCountry=(countries)=>{
+    console.log(countries);
+    countries.forEach(country => {
+        const countryDiv=document.getElementById('country-div');
+        const newDiv=document.createElement('div');
+        newDiv.classList.add('country');
+        newDiv.innerHTML=`
+        <h1>Name:${country.name.common}</h1>
+        <h2>capital:${country.capital?country.capital[0]:'no capital'}</h2>
+        <button onclick="moreInfo('${country.cca2}')">Details</button>
+        `;
+        countryDiv.appendChild(newDiv);
+    });
+}
+const moreInfo=(code)=>{
+    const url=`https://restcountries.com/v3.1/alpha/${code}`
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>showInfo(data))
+}
+const showInfo=(country)=>{
+console.log(country);
+const singleCountryDiv=document.getElementById('countryDetail');
+const singleCountry=document.createElement('div');
+singleCountry.innerHTML=`
+<h5>capital:${country[0].capital ? country[0].capital[0] : 'no capital'}</h5>
+<img src="${country[0].flags.png}" alt="">
+`;
+singleCountryDiv.appendChild(singleCountry);
+}
+loadCountry()
+
+////////////////////////////////////////////////3.meal db api
+html:
+<section>
+<div id="meal-container" class="row row-cols-1 row-cols-md-3 g-4">
+</div>
+</section>
+
+js:
+const loadMealData=()=>{
+    fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=Fish')
+    .then(res=>res.json())
+    .then(data=>showMealData(data))
+}
+const showMealData=(meals)=>{
+console.log(meals);
+const mealContainer=document.getElementById('meal-container');
+meals.meals.forEach(meal =>{
+    console.log(meal);
+    const newDiv=document.createElement('div');
+    newDiv.classList.add('col');
+    newDiv.innerHTML=`
+    <div class="card">
+      <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${meal.strMeal}</h5>
+        <p class="card-text">This is a longer card supporting text below as a natural lead- additional content. This content is a littl longer.</p>
+      </div>
+    `;
+    mealContainer.appendChild(newDiv);
+})
+}
+
+loadMealData()
+
+
+//////////////////////////////4.meal api with search box
+
+step-1: main function e parameter dibo
+step-2: main url e dynamically sei parameter er name dibo
+step-3: html e akta search input dibo and search button dibo.input eid dibo.
+step-4:button e onclick fn dibo.
+step-5: onclick fn e input value ta nibo
+step-6:er porer line ei main fn ke call korbo jar vitor parameter hisebe input value ke pathabo
+step-7: mealsContainer ke emptykorte hbe. na korle search korle notun kore add hbe,ager gulo remove hbena
+
+html:
+<section class="m-5">
+        <div class="m-5 d-flex align-item-center justify-content-center">
+            <input id="searchInput" type="text">
+            <button onclick="btnClick()" class="btn btn-primary mx-3">search</button>
+        </div>
+            <div id="meal-container" class="row row-cols-1 row-cols-md-3 g-4">
+            </div>
+ </section>
+
+ js:
+ const loadMealData=(keyword)=>{
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${keyword}`)
+    .then(res=>res.json())
+    .then(data=>showMealData(data))
+}
+const showMealData=(meals)=>{
+console.log(meals);
+const mealContainer=document.getElementById('meal-container');
+mealContainer.innerHTML='';
+meals.meals.forEach(meal =>{
+    console.log(meal);
+    const newDiv=document.createElement('div');
+    newDiv.classList.add('col');
+    newDiv.innerHTML=`
+    <div class="card">
+      <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${meal.strMeal}</h5>
+        <p class="card-text">This is a longer card supporting text below as a natural lead- additional content. This content is a littl longer.</p>
+      </div>
+    `;
+    mealContainer.appendChild(newDiv);
+})
+}
+const btnClick=()=>{
+    console.log('btn click')
+    const inputText=document.getElementById('searchInput').value;
+    loadMealData(inputText);
+}
+
+loadMealData('rice');
+
+//////////////////5.show meal api meal details in a modal:
+
+html:
+ <section class="m-5">
+        <div class="m-5 d-flex align-item-center justify-content-center">
+            <input id="searchInput" type="text">
+            <button onclick="btnClick()" class="btn btn-primary mx-3">search</button>
+        </div>
+            <div id="meal-container" class="row row-cols-1 row-cols-md-3 g-4">
+            </div>
+        
+        <!-- modal -->
+        <!-- Button trigger modal -->
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modalBody">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+js:
+
+const loadMealData=(keyword)=>{
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${keyword}`)
+    .then(res=>res.json())
+    .then(data=>showMealData(data))
+}
+const showMealData=(meals)=>{
+console.log(meals);
+const mealContainer=document.getElementById('meal-container');
+mealContainer.innerHTML='';
+meals.meals.forEach(meal =>{
+    console.log(meal);
+    const newDiv=document.createElement('div');
+    newDiv.classList.add('col');
+    newDiv.innerHTML=`
+    <div class="card">
+      <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${meal.strMeal}</h5>
+        <p class="card-text">This is a longer card supporting text below as a natural lead- additional content. This content is a littl longer.</p>
+        <button type="button" class="btn btn-primary" onclick="modalBtnDetails(${meal.idMeal})" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Details
+  </button>
+      </div>
+    `;
+    mealContainer.appendChild(newDiv);
+})
+}
+const btnClick=()=>{
+    console.log('btn click')
+    const inputText=document.getElementById('searchInput').value;
+    loadMealData(inputText);
+}
+const modalBtnDetails=(mealid)=>{
+console.log(mealid)
+fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`)
+.then(res=>res.json())
+.then(data=>showDetailsModal(data.meals[0]));
+}
+const showDetailsModal=(mealDetail)=>{
+document.getElementById('exampleModalLabel').innerText=mealDetail.strMeal;
+document.getElementById('modalBody').innerHTML=`
+<img class="img-fluid" src="${mealDetail.strMealThumb}">
+`;
+}
+
+loadMealData('rice');
+
+
+***catch error (format)
+    fetch(`url`)
+    .then(res=>res.json())
+    .then(data=>showMealData(data))
+    .catch(error=>{
+        console.log(error)
+    })
+
+***async await:
