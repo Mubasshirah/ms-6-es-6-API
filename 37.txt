@@ -1,0 +1,166 @@
+########################################COMMON JS CONCEPTS:
+1.js dynamic type language.
+ example-1: obj ager reference dhore rakhe.
+
+ let firstObj={name:'ali',age:20};
+let secondObj=firstObj;
+console.log(firstObj,secondObj);
+secondObj={name:'kali',age:30};
+console.log(firstObj,secondObj)
+
+*tobe partially obj er value change korle purotai change hobe
+secondObj.age=400;
+console.log(firstObj,secondObj);
+
+***kotovbe undefine paua jay: 8 ways
+1.variable er value assign na korle.
+2.function with no return
+2.fn er parameter e value assign na korle.
+4.return ke define na korle
+5.obj er amn property er value chaile jta exist korena obj er vitor.
+6.array er length er chey o besi kono length er value chaile.
+7.array er kono element ke delete keyword dia dlt koorle oi position e undefined dekhabe.splice dia kora jabe.
+8.kono variable er value undefined set korle undefined dibe.ai khetre null dite hbe.
+
+**typeof null is an object.
+
+# truthy and falsy value:
+truthy:
+1.any number except 0
+2.if value is assigned  true.
+3.any string except ''
+4.object or {} object
+5.array or [] array
+
+
+falsy:
+1.if value is assigned  false.
+2. if value is 0
+3.'' empty string
+3.undefined falsy
+5.null
+
+*how tocheckfalsy value:
+(!variable) it means not falsy or true.
+(!!variable) it means not truthy or false
+
+*(==) (===) :-(type coercion)
+== only value check kore === value and type check kore.
+
+$$$ Block scope global scope simple understanding of Hoisting:
+var dia fn er vitor kono variable diclear korle seta hoisting hoe upore uthe jay.
+8normal fn hoistingkore but arrow or fn expression hoising korena.
+
+
+%%%%Closure, encapsulation, private variable:(aro vlo kore pore bujhbo)
+                  1.kono akta fn er vitor thke arekta fn ke return kora hoile oi fn ta tar parent fn er variable ke access korte parbe.
+            2.notun variable e bar bar fn ke call kora hoile je jar sequence dhore erakhbe.nijosso alada copy variable toiri hbe
+        => atai closure.
+
+        function count(){
+    let counting=0;
+    return function(){
+        counting++;
+        return counting;
+    }
+}
+
+const count1=count();
+console.log(count1())
+console.log(count1())
+console.log(count1())
+console.log(count1())
+console.log(count1())
+const count2=count();
+console.log(count2());
+console.log(count2());
+console.log(count2());
+console.log(count2());
+console.log(count2());
+
+
+****Callback function and pass different functions(pore janbo)
+
+****function arguments :
+**function er vitore parameter bole.ar call korar somoy o parameter er je value dia hoa ogula ke arguments bole.
+function er vitore console.log(arguments) korle akta object paua jay jegulo index number onujaye array like object er key ar value hisebe bose.
+                      *arguments er type jana jabe,for loop chalano jbe but push kora jebna.
+                      *arguments ke array te convert kora jbe [...arguments] ai way te.
+function sum(a,b,c){
+    console.log(arguments);
+    const result=a+b+c;
+    return result;
+}
+const sum2=sum(1,2,3);
+console.log(sum2);
+const sum1=sum(1,2,3,4,5,6);
+console.log(sum1);
+console.log(sum.length)
+
+                    *kono fn .length dia bujhay koyta arguments dia hoise
+
+*****pass by reference pass by value:
+
+*non primitive data are passed by reference
+*primitive data are passed by value.
+
+const num11=5;
+const num22=7;
+function multiply(num1,num2){
+    num1=10;
+    const result=num1*num2;
+    return result;
+}
+console.log(multiply(num11,num22));
+console.log(num11,num22)
+* fn er vitore value change korleu fn er value same e thke
+
+const stu1={name:'adiba',age:30};
+const stu2={name:'tanjib',age:40};
+function couple(first,second){
+ first.name="mubasshirah";
+ second.age=100;
+}
+console.log(stu1,stu2);
+couple(stu1,stu2);
+console.log(stu1,stu2)
+*fn er vitore value change kore baire call kore value console korle value change hoe jay.karon non premitive data reference dhore rkhe.
+
+*PRACTICE PROBLEM:
+
+1.kono variable number naki na check kora isNaN dia
+  const para='kamil';
+console.log(isNaN(para))
+
+2.variable e bivinno value set kore dekhte hbe true day na false
+  let falsyValue=undefined;
+if(falsyValue){
+    console.log('value is true')
+}
+else{
+    console.log('value is false')
+}
+
+3.tinta variable er third erta akta string hbe jetar upor depend kore first er duitay arithmetic operation hbe.
+
+const operation=(a,b,c)=>{
+    if(c==='add'){
+        return a+b;
+    
+    }
+    else if(c==='subtract'){
+        return a-b;
+    }
+    else if(c==='devide'){
+        return a/b
+    }
+    else{
+        return 'invalid';
+    }
+}
+console.log(operation(2,3,'devide'));
+
+**interview qn:
+block scope,global scope,scope,hoisting,Callback fn,closure;
+
+

@@ -1,0 +1,123 @@
+**object construction ways:
+
+1.object e property and method thakte pare.(atai amra use korbo)
+  exmple:(object literals)
+const player={};
+player.name='sakib';
+player.gender='male';
+player.bat=function(){
+    console.log('spin  the bat');
+}
+console.log(player);
+player.bat()
+
+2.object constructor
+const person=new Object();
+console,log(person);
+
+3.object create method
+const atel=Object.create(null);
+console.log(atel)
+const batel=Object.create(player);
+console.log(batel)
+console.log(batel.name)
+
+*ai khetre prototypical chain maintain hoa. tai batel nije empty hoileu se protyical chain maintain kore tar vitor assign kora object player e cholejay.and sekhan thk name property ta dekhay.
+
+4.class use kora(ES6)
+class person{
+    name='aiba';
+    address='mirpur';
+    constructor(age){
+        this.age=age;
+    }
+}
+const person1=new person(30);
+console.log(person1)
+
+5.fn dia o bnano jay. use hoana akhn ar
+
+***complex object:
+example-1:
+const student={
+    name:'adiba',
+    address:'mirpur',
+    money:5000,
+    subject:['math','physics','chemistry'],
+    exam:function(){
+        console.log(this.name, 'your examat 9pm')
+    },
+    treatday(treatMoney,tips){
+        this.money=this.money-treatMoney-tips;
+        return `${treatMoney} tk khauanor por or kache ache ${this.money}`;
+    }
+ }
+ student.exam();
+ const firstDola=student.treatday(1000,100);
+ console.log(firstDola);
+
+ ->->-> object er property guloke seiobject erikono method thk call korte chaile this.property use korte hoa
+
+ ** Keys, values, entries, delete, seal, freeze:(pore jnleu hbe,mainly keys value)
+
+ const object={name:'adiba',age:'30',job:'unemployed'}
+console.log(Object.keys(object) )
+console.log(Object.values(object) )
+console.log(Object.entries(object))
+*first duita array of string dibe.and third erta array of array dibe
+
+@@@@ How to loop through object:
+****-> for of array te apply kora jay object e kora jayna.
+**object er property er value read korar duita way amrause korbo:
+object.property and object[key]  where key property guloke akta variable e rakha
+example:
+const object={name:'adiba',age:'30',job:'unemployed'};
+const keys=Object.keys(object);
+console.log(keys);
+for(const key of keys){
+const allEntries=object[key];
+console.log(key,allEntries)
+}
+
+*for in:(object er vitor loop through korte )
+const object={name:'adiba',age:'30',job:'unemployed'};
+for(const key in object){
+    console.log(key,object[key]);
+}
+
+compare object:
+const first=2;
+const second=2;
+if(first===second){
+    console.log('they are same')
+}
+else{
+    console.log('they are different');
+}
+**non primitive data reference o check kore tai value same oileu different dekhay.
+const first1={a:2};
+const second1={a:2};
+if(first1===second1){
+    console.log('they are same')
+}
+else{
+    console.log('they are different');
+}
+*tobe amn korle same dekhabe
+const first1={a:2};
+const second1={a:2};
+const third1=second1;
+if(third1===second1){
+    console.log('they are same')
+}
+else{
+    console.log('they are different');
+}
+*object and array same kina seta pore bujhleu cholbe
+
+*borrow:advance pore dekhleu hbe.
+
+#####this keyword:(super advance)(pore vlo kore bujhte hbe)
+*object er kono method e this likhle seta object ke refer korbe.
+*arrow fn er vitor this dile seta tar immediate object ke refer na kore window ke refer kore
+*onclick dile window dekhay,addEventListener dile elemnt ke dekhay.
