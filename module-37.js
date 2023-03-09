@@ -69,19 +69,30 @@
 //     console.log('value is false')
 // }
 
-const operation=(a,b,c)=>{
-    if(c==='add'){
-        return a+b;
+// const operation=(a,b,c)=>{
+//     if(c==='add'){
+//         return a+b;
     
-    }
-    else if(c==='subtract'){
-        return a-b;
-    }
-    else if(c==='devide'){
-        return a/b
-    }
-    else{
-        return 'invalid';
-    }
-}
-console.log(operation(2,3,'devide'));
+//     }
+//     else if(c==='subtract'){
+//         return a-b;
+//     }
+//     else if(c==='devide'){
+//         return a/b
+//     }
+//     else{
+//         return 'invalid';
+//     }
+// }
+// console.log(operation(2,3,'devide'));
+// let p='Javascript'; 
+// p='React'; 
+// let q=p; 
+// // console.log(q); 
+// function work(x, y = 4) {
+//     return x + y;
+//    }
+//    console.log(work(32));
+
+const strArr=['adiba','adib','adi'];
+console.log(strArr.map(data=>data.slice()))

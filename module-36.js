@@ -42,15 +42,15 @@
 // console.log(Object.keys(object) )
 // console.log(Object.values(object) )
 // console.log(Object.entries(object))
-const object={name:'adiba',age:'30',job:'unemployed'};
+// const object={name:'adiba',age:'30',job:'unemployed'};
 // const keys=Object.keys(object);
-// console.log(keys);
+// // console.log(keys);
 // for(const key of keys){
 // const allEntries=object[key];
-// console.log(key,allEntries)
+// // console.log(key,allEntries)
 // }
 // for(const key in object){
-//     console.log(key,object[key]);
+//     console.log(object[key]);
 // }
 
 // const first=2;
@@ -69,12 +69,12 @@ const object={name:'adiba',age:'30',job:'unemployed'};
 // else{
 //     console.log('they are different');
 // }
-const first1={a:2};
-const second1={a:2};
-const third1=second1;
-if(third1===second1){
-    console.log('they are same')
-}
-else{
-    console.log('they are different');
-}
+// const first1={a:2};
+// const second1={a:2};
+// const third1=second1;
+// if(third1===second1){
+//     console.log('they are same')
+// }
+// else{
+//     console.log('they are different');
+// }
